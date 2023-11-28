@@ -6,7 +6,7 @@ import pandas as pd
 
 
 #use read_excel for .xlsx files
-
+#needs to pip install openpyxl
 
 
 
@@ -28,14 +28,13 @@ def main():
 
         combined_playoff = combined_playoff._append(df, ignore_index = True)
 
-
     combined_game_stats = pd.DataFrame()
 
 
     game_stats_dir_list = os.listdir(game_stats_path)
     for file in game_stats_dir_list:
         file_path = os.path.join(game_stats_path, file)
-        df = pd.read_csv(file_path, delimiter='\t')
+        df = pd.read_csv(file_path)
 
 
         combined_game_stats = combined_game_stats._append(df, ignore_index = True)
@@ -47,7 +46,7 @@ def main():
     team_stats_dir_list = os.listdir(team_stats_path)
     for file in team_stats_dir_list:
         file_path = os.path.join(team_stats_path, file)
-        df = pd.read_csv(file_path, delimiter='\t')
+        df = pd.read_csv(file_path)
 
 
         combined_team_stats = combined_team_stats._append(df, ignore_index = True)
