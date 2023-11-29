@@ -36,6 +36,9 @@ def main():
         file_path = os.path.join(game_stats_path, file)
         df = pd.read_csv(file_path)
 
+        df.loc[(df['GV'] > df['GH']), 'winner'] = df['Visitor']
+        df.loc[(df['GH'] > df['GV']), 'winner'] = df['Home']
+        df["cum_wins"] = df.groupby("winner").cumcount()+1
 
         combined_game_stats = combined_game_stats._append(df, ignore_index = True)
 

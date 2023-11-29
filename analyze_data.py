@@ -8,6 +8,7 @@ from scipy import stats
 def main():
     playoffs = pd.read_csv("combined-files\combined_playoff.csv")
     team_stats = pd.read_csv("combined-files\combined_team_stats.csv")
+    game_stats = pd.read_csv("combined-files\combined_game_stats.csv")
     
     #changing season format to fit for teamstats ex. 20172018 -> 2017
     playoffs['Season'] = playoffs['Season'].astype('string')                                                                
@@ -43,7 +44,7 @@ def main():
     #merging conference finalist to team stats to view the conference finalist team stats (i hope this makes sense)
     finalist_team_stats = pd.merge(conference_finalist, team_stats, on=['season', 'team'])
 
-    print(finalist_team_stats)
+    print(game_stats)
     finalist_team_stats.to_csv('test.csv')
 
 
